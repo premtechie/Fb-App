@@ -5,9 +5,6 @@ import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
 
-
-
-
 const Post =styled.div`
     width:100%;
     display:flex;

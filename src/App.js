@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import Header from './Components/Header/Header'
+import ActionButtons from './Components/LeftSideContent/ActionButtons';
+import ShortCuts from './Components/LeftSideContent/ShortCuts';
+import Explore from './Components/LeftSideContent/Explore';
+import SavedPages from './Components/RightSideContent/SavedPages';
+import SuggestedGroup from './Components/RightSideContent/SuggestedGroup';
+import Layout from './Components/Layout/Layout';
+import CreatePost from './Components/CreatePost/CreatePost';
+import Stories from './Components/Stories/Stories';
+import Posts from './Components/Posts/Posts';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App" >
+        <Header />
+        {/* <ActionButtons />
+        <ShortCuts />
+        <Explore /> */}
+        {/* <SavedPages /> */}
+        {/* <SuggestedGroup /> */}
+        <Layout />
+        {/* <CreatePost /> */}
+        {/* <Stories /> */}
+        {/* <Posts /> */}
+      </div>
   );
 }
 

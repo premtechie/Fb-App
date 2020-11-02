@@ -6,7 +6,7 @@ import { FaUserFriends } from "react-icons/fa";
 import { ImHappy2 } from "react-icons/im";
 import styled from 'styled-components'
 import {useDispatch, useSelector} from 'react-redux'
-import newPost from '../../Redux/ActionCreator/ActionCreator';
+import {newPost} from '../../Redux/ActionCreator/ActionCreator';
 
 const PostWrapper=styled.div`
     border-radius:20px;

@@ -4,7 +4,10 @@ import { AiFillLike } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import { commentDisplay, likeCountIncrement } from '../../Redux/ActionCreator/ActionCreator';
+
+let count=false;
 
 const Post =styled.div`
     width:100%;
@@ -73,13 +76,20 @@ const PostLikes=styled.div`
     border-radius:20px;
     background-color:whitesmoke;
 `
+const LikeCount=styled.div`
+    width:100%;
+    border-radius:10px;
+    text-align:start;
+    padding-left:20px;
+`
+
 const Like=styled.div`
     display:flex;
     align-items:center;
     width:33%;
     justify-content:center;
     padding:5px 0;
-    color:black;
+    color:${count ? "blue":"black"};
     cursor:pointer;
     font-size:12px;
 `
@@ -115,12 +125,65 @@ const SendBtn=styled.button`
     border:none;
     border-radius:8px;
     background-color:blue;
+    cursor:pointer;
 `
+const PostComment=styled.div`
+    width:95%;
+    padding:3px 20px;
+    margin:8px auto;
+    background-color:whitesmoke;
+    border-radius:20px;
+    text-align:start;
+
+`
+const CommentDiv=styled.div`
+    text-align:start;
+    color:blue;
+    margin-left:15px;
+    font-weight:bold;
+`
+const LikeIcon=styled.div`
+    display:flex;
+    align-items:center
+    color:blue;
+    font-size:13px;
+`
+
 
 function Posts() {
 
     const [comment,viewComment]=useState(false);
-    console.log('Posts: helllo')
+        
+    const dispatch = useDispatch()
+    
+    const counter=useSelector(state=>state.like);
+
+
+    //----------------like handler section--------------------
+    const likehandler=()=>{
+        if(!counter){
+            dispatch(likeCountIncrement())
+        }
+        count=true;
+    }
+
+    //------------comment handler section-------------
+
+    const [commentText,sendComment]=useState('')
+    const commentHandler=()=>{
+        console.log('value :',commentText);
+        dispatch(commentDisplay(commentText));
+        viewComment(false)
+        sendComment('')
+    }
+
+    const commentArray=useSelector(state=>state.comment)
+
+    console.log("comments:",commentArray);
+    console.log('post likes:',counter);
+
+
+
     return (
         <Post>
             <ProfileDp>
@@ -136,8 +199,16 @@ function Posts() {
             <ImageContainer>
                 <PostImg src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' alt=''/>
             </ImageContainer>
+            <LikeCount>
+                {counter?
+                    <LikeIcon>
+                        <AiFillLike style={{color:'blue',marginTop:'3px'}} />
+                        <div>{counter}</div>
+                    </LikeIcon>
+                :null}
+            </LikeCount>
             <PostLikes>
-                <Like>
+                <Like onClick={likehandler} >
                     <AiFillLike />
                     <div>Like</div>
                 </Like>
@@ -150,11 +221,16 @@ function Posts() {
                     <div>Share</div>
                 </Share>
             </PostLikes>
+            <CommentDiv>Comments:</CommentDiv>
             {comment ?
                 <CommentSection>
-                    <TextArea rows={3} style={{borderRadius:'20px', margin:'20px 0'}} placeholder='What"s on your Mind ? ' />
-                    <SendBtn>Send</SendBtn>
+                    <TextArea value={commentText} onChange={(e)=>sendComment(e.target.value)} rows={3} style={{borderRadius:'20px', margin:'20px 0'}} placeholder='What"s on your Mind ? ' />
+                    <SendBtn onClick={commentHandler}>Send</SendBtn>
                 </CommentSection>:null
+            }
+
+            {
+                commentArray.map(comment=><PostComment>{comment}</PostComment>)
             }
         </Post>
     )

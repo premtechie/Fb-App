@@ -19,7 +19,7 @@ function Layout() {
     return (
         <div>
             <Row style={{ minHeight:'100vh', marginTop:'60px'}} justify='center'>
-                <Col xs={0} sm={0} md={0} lg={6} style={{backgroundColor:'#e0ebeb',minHeight:'100vh'}}>
+                <Col xs={0} sm={0} md={0} lg={6} style={{minHeight:'100vh'}}>
                 <Row justify='center'  >
                             <Col md={22} >
                                 <ActionButtons />
@@ -32,12 +32,12 @@ function Layout() {
                             </Col>
                     </Row>
                 </Col>
-                <Col xs={20} sm={22} md={22} lg={10} style={{backgroundColor:'#e0ebeb', minHeight:'100vh'}}>
+                <Col xs={20} sm={22} md={22} lg={10} style={{ minHeight:'100vh'}}>
                     <Row justify='center'>
                             <Col md={24} lg={24} >
                                 <CreatePost />
                             </Col>
-                            <Col md={24} lg={24}>
+                            <Col xs={24} md={24} lg={24}>
                                 {
                                     selector.map((obj, index) => {
                                         return (<Posts key={index} data={obj} />)
@@ -46,7 +46,7 @@ function Layout() {
                             </Col>
                     </Row>
                 </Col>
-                <Col xs={0} sm={0} md={0} lg={6} style={{ backgroundColor:'#e0ebeb',minHeight:'100vh'}}>
+                <Col xs={0} sm={0} md={0} lg={6} style={{minHeight:'100vh'}}>
                     <Row justify='center'>
                         <Col md={22}>
                             <SavedPages/>

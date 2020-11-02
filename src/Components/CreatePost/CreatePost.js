@@ -18,6 +18,9 @@ const PostWrapper=styled.div`
     -moz-box-shadow: 0 0 4px 2px #ccc;
     -webkit-box-shadow: 0 0 4px 2px #ccc;
     box-shadow: 0 0 4px 2px #ccc;
+    @media(max-width:700px){
+        padding:7px;
+    }
 `
 
 const CreateButton=styled.div`
@@ -54,6 +57,9 @@ const AttachmentIcons=styled.div`
     background-color:#e0ebeb;
     border-radius:30px;
     font-size:12px;
+    @media(max-width:700px){
+        padding:5px;
+    }
 
 `
 const TagAttachment=styled.div`
@@ -63,7 +69,9 @@ const TagAttachment=styled.div`
     font-size:12px;
     background-color:pink;
     border-radius:30px;
-
+    @media(max-width:700px){
+        padding:5px;
+    }
 `
 const HappyAttachment=styled.div`
     display:flex;
@@ -72,7 +80,9 @@ const HappyAttachment=styled.div`
     font-size:12px;
     background-color:lightyellow;
     border-radius:30px;
-
+    @media(max-width:700px){
+        padding:5px;
+    }
 `
 const IconBg=styled.div`
     background-color:blue;
@@ -107,6 +117,10 @@ const OptionButton=styled.div`
     justify-content:center;
     border-radius:30px;
     font-weight:bolder;
+    @media(max-width:700px){
+        width:30px;
+        height:30px;
+    }
 `
 
 

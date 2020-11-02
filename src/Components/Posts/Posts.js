@@ -10,7 +10,7 @@ import { commentDisplay, likeCountIncrement } from '../../Redux/ActionCreator/Ac
 let count=false;
 
 const Post =styled.div`
-    width:100%;
+    max-width:100%;
     display:flex;
     flex-flow:column;
     padding:10px;
@@ -127,6 +127,7 @@ const SendBtn=styled.button`
     border-radius:8px;
     background-color:blue;
     cursor:pointer;
+    outline:none;
 `
 const PostComment=styled.div`
     width:95%;
@@ -172,10 +173,13 @@ function Posts(props) {
 
     const [commentText,sendComment]=useState('')
     const commentHandler=()=>{
-        console.log('value :',commentText);
-        dispatch(commentDisplay(commentText));
-        viewComment(false)
-        sendComment('')
+        if(commentText){
+            console.log('value :',commentText);
+            dispatch(commentDisplay(commentText));
+            viewComment(false)
+            sendComment('')
+        }
+        
     }
 
     const commentArray=useSelector(state=>state.comment)

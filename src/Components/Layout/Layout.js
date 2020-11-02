@@ -9,12 +9,13 @@ import SuggestedGroup from '../RightSideContent/SuggestedGroup';
 import CreatePost from '../CreatePost/CreatePost';
 import Posts from '../Posts/Posts';
 import { useSelector } from 'react-redux';
+import ChatComponent from '../ChatComponent/ChatComponent';
 
 function Layout() {
-    useEffect(()=>{
-        // posts=useSelector(state=>state.postData)
-        console.log('hhhh')
-    },[])
+        // const posts=useSelector(state=>state.postData)
+        // console.log('hhhh',posts)
+        const selector=useSelector(state=>state.postData);
+        console.log('Layout:',selector)
     return (
         <div>
             <Row style={{ minHeight:'100vh', marginTop:'60px'}} justify='center'>
@@ -35,7 +36,9 @@ function Layout() {
                     <Row justify='center'>
                             <Col md={24} lg={24} >
                                 <CreatePost />
-                                 <Posts />
+                            </Col>
+                            <Col md={24} lg={24}>
+                                <Posts />
                             </Col>
                     </Row>
                 </Col>
@@ -46,6 +49,9 @@ function Layout() {
                         </Col>
                         <Col md={22}>
                             <SuggestedGroup />
+                        </Col>
+                        <Col md={22}>
+                            <ChatComponent />
                         </Col>
                     </Row>
                 </Col>

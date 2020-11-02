@@ -138,7 +138,6 @@ function CreatePost(props) {
         const postInputs={
             textValue:textData        
         }
-
         dispatch(newPost(postInputs));
         console.log('values from button : ',postInputs)
         setTextData('')

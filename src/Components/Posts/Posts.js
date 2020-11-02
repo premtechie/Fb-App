@@ -17,6 +17,7 @@ const Post =styled.div`
     justify-content:center;
     background-color:white;
     border-radius:20px;
+    margin:10px 0;
 `
 
 const ProfileDp=styled.div`
@@ -150,7 +151,7 @@ const LikeIcon=styled.div`
 `
 
 
-function Posts() {
+function Posts(props) {
 
     const [comment,viewComment]=useState(false);
         
@@ -183,6 +184,9 @@ function Posts() {
     console.log('post likes:',counter);
 
 
+    console.log("props value : ", props.data)
+    const textValue=props.data.text.textValue;
+
 
     return (
         <Post>
@@ -194,10 +198,10 @@ function Posts() {
                 </ProfileName>         
             </ProfileDp>
             <PostText>
-                <H4>so most of the functions of this module have already been marked as deprecated. Installation.so most of the functions of this module have already been marked as deprecated. Installation</H4>
+                <H4>{textValue}</H4>
             </PostText>
             <ImageContainer>
-                <PostImg src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' alt=''/>
+                {/* <PostImg src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' alt=''/> */}
             </ImageContainer>
             <LikeCount>
                 {counter?

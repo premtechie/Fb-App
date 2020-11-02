@@ -38,7 +38,11 @@ function Layout() {
                                 <CreatePost />
                             </Col>
                             <Col md={24} lg={24}>
-                                <Posts />
+                                {
+                                    selector.map((obj, index) => {
+                                        return (<Posts key={index} data={obj} />)
+                                    })
+                                }
                             </Col>
                     </Row>
                 </Col>

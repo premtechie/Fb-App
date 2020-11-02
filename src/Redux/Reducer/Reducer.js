@@ -20,8 +20,9 @@ const reducer=(state=initialState,action)=>{
 
 const addPost=(state,action)=>{
     const data=action.payload;
-    const newState = {...state}
-    newState.postData.push({text:data}) 
+    const newState = JSON.parse(JSON.stringify(state));
+    // newState.postData = [...state.postData];
+    newState.postData.unshift({text:data}) 
     console.log('Reducer:',newState)
     return newState;
 }

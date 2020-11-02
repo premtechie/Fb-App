@@ -17,7 +17,7 @@ const Input=styled.input`
         box-shadow: 0 0 4px 0 #888;
     }
     @media(max-width:1000px){
-        width:100%;
+        width:200%;
         margin:0;
         margin-left:10px;
     }

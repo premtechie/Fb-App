@@ -4,6 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
+import {useSelector} from 'react-redux'
 
 const Post =styled.div`
     width:100%;
@@ -119,7 +120,7 @@ const SendBtn=styled.button`
 function Posts() {
 
     const [comment,viewComment]=useState(false);
-
+    console.log('Posts: helllo')
     return (
         <Post>
             <ProfileDp>

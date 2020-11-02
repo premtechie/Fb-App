@@ -15,7 +15,7 @@ const reducer=(state=initialState,action)=>{
 const addPost=(state,action)=>{
     const data=action.payload;
     const newState = {...state}
-    newState.postData.push({text:data,imgURL:''}) 
+    newState.postData.push({text:data}) 
     console.log('Reducer:',newState)
     return newState;
 }

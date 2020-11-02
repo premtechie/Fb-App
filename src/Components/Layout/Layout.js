@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from 'styled-components';
 import ActionButtons from '../LeftSideContent/ActionButtons';
 import Explore from '../LeftSideContent/Explore';
@@ -8,8 +8,13 @@ import SavedPages from '../RightSideContent/SavedPages';
 import SuggestedGroup from '../RightSideContent/SuggestedGroup';
 import CreatePost from '../CreatePost/CreatePost';
 import Posts from '../Posts/Posts';
+import { useSelector } from 'react-redux';
 
 function Layout() {
+    useEffect(()=>{
+        // posts=useSelector(state=>state.postData)
+        console.log('hhhh')
+    },[])
     return (
         <div>
             <Row style={{ minHeight:'100vh', marginTop:'60px'}} justify='center'>
@@ -30,7 +35,7 @@ function Layout() {
                     <Row justify='center'>
                             <Col md={24} lg={24} >
                                 <CreatePost />
-                                <Posts />
+                                 <Posts />
                             </Col>
                     </Row>
                 </Col>

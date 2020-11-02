@@ -19,7 +19,6 @@ const PostWrapper=styled.div`
     -webkit-box-shadow: 0 0 4px 2px #ccc;
     box-shadow: 0 0 4px 2px #ccc;
 `
-const reference = React.createRef()
 
 const CreateButton=styled.div`
     width:35px;
@@ -113,6 +112,7 @@ const OptionButton=styled.div`
 
 const IconTagName=styled.div`
     margin:0 5px;
+    cursor:pointer;
 `
 const ChooseFile=styled.input`
     margin:0 10px;
@@ -124,29 +124,39 @@ const ChooseFile=styled.input`
 
 
 function CreatePost(props) {
-    
-    const [textData, setTextData]=useState('')
+    const fileRef = useRef();
+    const [textData, setTextData]=useState('');
+    const [image,setImage] = useState('');
     const dispatch = useDispatch()
     const textDataHandler=(data)=>{
         setTextData(data)
-        console.log('Datas from state',textData)
     }
 
     const postHandler=()=>{
-        dispatch(newPost(textData));
-        console.log('values from button : ',textData)
+        
+        // setImage(URL.createObjectURL(fileRef.current.files[0]))
+        const postInputs={
+            textValue:textData        
+        }
+
+        dispatch(newPost(postInputs));
+        console.log('values from button : ',postInputs)
         setTextData('')
-        alert('posted SuccessFully')
+        alert('Posted Successfully....!')
+    }
+    const fileClickHandler=()=>{
+        fileRef.current.click();
     }
 
+
     const postValue=useSelector(state=>state.postData)
-    console.log(postValue)
+    const value=postValue[0];
+    console.log('imageAdd:',value)
     return (
         <PostWrapper>
             <PostIcon onClick={postHandler}>
                 <CreateButton><CgNotes /></CreateButton>
                 <H4>Create Post</H4>
-                {postValue.map((post,index)=><p key={index}>{post.text}</p>)}
             </PostIcon>
             <TextArea value={textData} onChange={(e)=>textDataHandler(e.target.value)} rows={3} style={{borderRadius:'20px', margin:'20px 0'}} placeholder='What"s on your Mind ? ' />
             <Attchments>
@@ -154,7 +164,8 @@ function CreatePost(props) {
                     <IconBg >
                         <RiGalleryFill />
                     </IconBg>
-                    <IconTagName>Gallery</IconTagName>
+                    <IconTagName onClick = {fileClickHandler }>Gallery</IconTagName>
+                    <input type = 'file' style = {{display:"none"}} ref = {fileRef}/>
                 </AttachmentIcons>
                 <TagAttachment>
                     <TagIconBg>

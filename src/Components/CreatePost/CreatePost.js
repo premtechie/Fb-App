@@ -150,7 +150,9 @@ function CreatePost(props) {
         
         // setImage(URL.createObjectURL(fileRef.current.files[0]))
         const postInputs={
-            textValue:textData        
+            textValue:textData,
+            like:0,
+            comments:['hello']        
         }
         dispatch(newPost(postInputs));
         console.log('values from button : ',postInputs)

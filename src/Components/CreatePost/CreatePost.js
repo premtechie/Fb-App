@@ -7,6 +7,7 @@ import { ImHappy2 } from "react-icons/im";
 import styled from 'styled-components'
 import {useDispatch, useSelector} from 'react-redux'
 import {newPost} from '../../Redux/ActionCreator/ActionCreator';
+import uuid from 'react-uuid'
 
 const PostWrapper=styled.div`
     border-radius:20px;
@@ -150,12 +151,12 @@ function CreatePost(props) {
         
         // setImage(URL.createObjectURL(fileRef.current.files[0]))
         const postInputs={
+            id:uuid(),
             textValue:textData,
             like:0,
             comments:['hello']        
         }
         dispatch(newPost(postInputs));
-        console.log('values from button : ',postInputs)
         setTextData('')
         alert('Posted Successfully....!')
     }
@@ -166,7 +167,6 @@ function CreatePost(props) {
 
     const postValue=useSelector(state=>state.postData)
     const value=postValue[0];
-    console.log('imageAdd:',value)
     return (
         <PostWrapper>
             <PostIcon onClick={postHandler}>

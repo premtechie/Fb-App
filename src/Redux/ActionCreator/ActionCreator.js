@@ -8,9 +8,10 @@ export const newPost=(data)=>{
     }
 }
 
-export const likeCountIncrement=()=>{
+export const likeCountIncrement=(id)=>{
     return {
-        type:LIKE_POST
+        type:LIKE_POST,
+        payload:id
     }
 }
 

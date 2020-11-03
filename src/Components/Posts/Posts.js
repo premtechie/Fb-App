@@ -153,19 +153,21 @@ const LikeIcon=styled.div`
 
 
 function Posts(props) {
-
+    
     const [comment,viewComment]=useState(false);
-        
+    
     const dispatch = useDispatch()
     
-    const counter=useSelector(state=>state.like);
+    const textValue=props.data.textValue;
+    
+    const postId=props.data.id;
+    
+   const counter=useSelector(state=>state.like)
 
-
+    console.log(counter)
     //----------------like handler section--------------------
     const likehandler=()=>{
-        if(!counter){
-            dispatch(likeCountIncrement())
-        }
+        dispatch(likeCountIncrement(postId))
         count=true;
     }
 
@@ -183,13 +185,14 @@ function Posts(props) {
     }
 
     const commentArray=useSelector(state=>state.comment)
+    //---------------current time----------
+    let time=new Date().toLocaleString();
 
+    //----------check---------------
     console.log("comments:",commentArray);
     console.log('post likes:',counter);
-
-
     console.log("props value : ", props.data)
-    const textValue=props.data.text.textValue;
+    console.log(time)
 
 
     return (
@@ -198,7 +201,7 @@ function Posts(props) {
                 <DpImg src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' alt='' />
                 <ProfileName>
                     <UserName>You</UserName>
-                    <Time>12 hours ago</Time>
+                    <Time>{time}</Time>
                 </ProfileName>         
             </ProfileDp>
             <PostText>

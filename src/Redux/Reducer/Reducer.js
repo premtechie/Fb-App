@@ -22,16 +22,21 @@ const addPost=(state,action)=>{
     const data=action.payload;
     const newState = JSON.parse(JSON.stringify(state));
     // newState.postData = [...state.postData];
-    newState.postData.unshift({text:data}) 
+    newState.postData.unshift(data) 
     console.log('Reducer:',newState)
     return newState;
 }
 
 const likeCounter=(state,action)=>{
+    let id=action.payload;
     const newState={...state}
+    const newArray={...state.postData}
+    const elementIndex=state.postData.findIndex(element=>element.id===id);
+    newArray[elementIndex]={...newArray[elementIndex],like:newArray[elementIndex].like++};
+    console.log('element : ', newArray[elementIndex])
+    
     newState.like+=1;
-    console.log('Reducer like count : ', newState)
-    return newState;
+    return newState
 }
 
 const commentSection=(state,action)=>{

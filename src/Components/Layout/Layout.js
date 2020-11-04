@@ -12,8 +12,7 @@ import { useSelector } from 'react-redux';
 import ChatComponent from '../ChatComponent/ChatComponent';
 
 function Layout() {
-        // const posts=useSelector(state=>state.postData)
-        // console.log('hhhh',posts)
+        
         const selector=useSelector(state=>state.postData);
         console.log('Layout:',selector)
     return (

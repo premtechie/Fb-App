@@ -4,12 +4,13 @@ import { AiFillLike } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
-import {useSelector,useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { commentDisplay, likeCountIncrement } from '../../Redux/ActionCreator/ActionCreator';
+import { COMMENT_POST } from '../../Redux/Actions/Actions';
 
-let count=false;
+let count = false;
 
-const Post =styled.div`
+const Post = styled.div`
     max-width:100%;
     display:flex;
     flex-flow:column;
@@ -20,20 +21,20 @@ const Post =styled.div`
     margin:10px 0;
 `
 
-const ProfileDp=styled.div`
+const ProfileDp = styled.div`
     display:flex;
     align-items:center;
     margin:10px;
     width:200px;
     height:60px;
 `
-const DpImg=styled.img`
+const DpImg = styled.img`
     width:30px;
     height:30px;
     border-radius:50%;
     margin-right:10px;
 `
-const ImageContainer=styled.div`
+const ImageContainer = styled.div`
     display:flex;
     justify-content:center;
     width:100%;
@@ -41,70 +42,60 @@ const ImageContainer=styled.div`
     height:100%;
     margin:10px 0;
 `
-const PostImg=styled.img`
+const PostImg = styled.img`
     width:100%;
     margin:0 10px;
     border-radius:20px;
 
 `
-const PostText=styled.div`
+const PostText = styled.div`
     margin:10px;
     display:flex;
 `
-const H4=styled.div`
+const H4 = styled.div`
     color:gray;
     text-align:start;
 `
-const ProfileName=styled.div`
+const ProfileName = styled.div`
     display:flex;
     flex-direction:column;
     align-items:start;
     justify-content:center;
     margin:0 10px;
 `
-const UserName=styled.div`
+const UserName = styled.div`
     font-size:14px;
     font-weight:bold;
 `
-const Time=styled.div`
+const Time = styled.div`
     font-size:11px;
     color:#ccc;
 `
-const PostLikes=styled.div`
+const PostLikes = styled.div`
     display:flex;
     margin:10px;
     width:95%;
     border-radius:20px;
     background-color:whitesmoke;
 `
-const LikeCount=styled.div`
+const LikeCount = styled.div`
     width:100%;
     border-radius:10px;
     text-align:start;
     padding-left:20px;
 `
 
-const Like=styled.div`
+const Like = styled.div`
     display:flex;
     align-items:center;
     width:33%;
     justify-content:center;
     padding:5px 0;
-    color:${count ? "blue":"black"};
+    color:${props=>props.likeState ? "blue" : "black"};
     cursor:pointer;
     font-size:12px;
 `
-const Comment=styled.div`
-    display:flex;
-    align-items:center;
-    width:33%;
-    justify-content:center;
-    padding:5px 0;
-    color:black;
-    font-size:12px;
-    cursor:pointer;
-`
-const Share=styled.div`
+const Comment = styled.div`
     display:flex;
     align-items:center;
     width:33%;
@@ -114,11 +105,21 @@ const Share=styled.div`
     font-size:12px;
     cursor:pointer;
 `
-const CommentSection=styled.div`
+const Share = styled.div`
+    display:flex;
+    align-items:center;
+    width:33%;
+    justify-content:center;
+    padding:5px 0;
+    color:black;
+    font-size:12px;
+    cursor:pointer;
+`
+const CommentSection = styled.div`
     display:flex;
     align-items:center;
 `
-const SendBtn=styled.button`
+const SendBtn = styled.button`
     color:white;
     width:100px;
     height:30px;
@@ -129,7 +130,7 @@ const SendBtn=styled.button`
     cursor:pointer;
     outline:none;
 `
-const PostComment=styled.div`
+const PostComment = styled.div`
     width:95%;
     padding:3px 20px;
     margin:8px auto;
@@ -138,13 +139,13 @@ const PostComment=styled.div`
     text-align:start;
 
 `
-const CommentDiv=styled.div`
+const CommentDiv = styled.div`
     text-align:start;
     color:blue;
     margin-left:15px;
     font-weight:bold;
 `
-const LikeIcon=styled.div`
+const LikeIcon = styled.div`
     display:flex;
     align-items:center
     color:blue;
@@ -153,46 +154,61 @@ const LikeIcon=styled.div`
 
 
 function Posts(props) {
-    
-    const [comment,viewComment]=useState(false);
-    
-    const dispatch = useDispatch()
-    
-    const textValue=props.data.textValue;
-    
-    const postId=props.data.id;
-    
-   const counter=useSelector(state=>state.like)
 
-    console.log(counter)
+    const [comment, viewComment] = useState(false);
+
+    const dispatch = useDispatch()
+
+    const textValue = props.data.textValue;
+
+    const postId = props.data.id;
+
+    const getPost = (state) => {
+        let postData = state.postData;
+        for (let i = 0; i < postData.length; i++) {
+            if (postData[i].id === postId) {
+                return postData[i];
+            }
+        }
+        return null;
+    }
+
+    const counter = useSelector(state => {
+        const post = getPost(state);
+        return post ? post.postLikeCount : 0;
+    });
+
+    const likeState = useSelector(state => {
+        const post = getPost(state);
+        return post.like;
+    });
+
     //----------------like handler section--------------------
-    const likehandler=()=>{
+    const likehandler = () => {
         dispatch(likeCountIncrement(postId))
-        count=true;
+        count = true;
     }
 
     //------------comment handler section-------------
 
-    const [commentText,sendComment]=useState('')
-    const commentHandler=()=>{
-        if(commentText){
-            console.log('value :',commentText);
+    const [commentText, sendComment] = useState('')
+    const commentHandler = () => {
+        const postComment={
+            id:postId,
+            comments:commentText
+        }
+        if (commentText) {
             dispatch(commentDisplay(commentText));
+            // dispatch({type:COMMENT_POST,payload:postComment })
             viewComment(false)
             sendComment('')
         }
-        
+
     }
 
-    const commentArray=useSelector(state=>state.comment)
+    const commentArray = useSelector(state => state.comment)
     //---------------current time----------
-    let time=new Date().toLocaleString();
-
-    //----------check---------------
-    console.log("comments:",commentArray);
-    console.log('post likes:',counter);
-    console.log("props value : ", props.data)
-    console.log(time)
+    let time = new Date().toLocaleString();
 
 
     return (
@@ -202,7 +218,7 @@ function Posts(props) {
                 <ProfileName>
                     <UserName>You</UserName>
                     <Time>{time}</Time>
-                </ProfileName>         
+                </ProfileName>
             </ProfileDp>
             <PostText>
                 <H4>{textValue}</H4>
@@ -211,19 +227,19 @@ function Posts(props) {
                 {/* <PostImg src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' alt=''/> */}
             </ImageContainer>
             <LikeCount>
-                {counter?
+                {counter ?
                     <LikeIcon>
-                        <AiFillLike style={{color:'blue',marginTop:'3px'}} />
+                        <AiFillLike style={{ color: 'blue', marginTop: '3px' }} />
                         <div>{counter}</div>
                     </LikeIcon>
-                :null}
+                    : null}
             </LikeCount>
             <PostLikes>
-                <Like onClick={likehandler} >
+                <Like likeState = {likeState} onClick={likehandler} >
                     <AiFillLike />
                     <div>Like</div>
                 </Like>
-                <Comment onClick={()=>viewComment(true)}>
+                <Comment onClick={() => viewComment(true)}>
                     <BiComment />
                     <div>Comment</div>
                 </Comment>
@@ -235,13 +251,13 @@ function Posts(props) {
             <CommentDiv>Comments:</CommentDiv>
             {comment ?
                 <CommentSection>
-                    <TextArea value={commentText} onChange={(e)=>sendComment(e.target.value)} rows={3} style={{borderRadius:'20px', margin:'20px 0'}} placeholder='What"s on your Mind ? ' />
+                    <TextArea value={commentText} onChange={(e) => sendComment(e.target.value)} rows={3} style={{ borderRadius: '20px', margin: '20px 0' }} placeholder='What"s on your Mind ? ' />
                     <SendBtn onClick={commentHandler}>Send</SendBtn>
-                </CommentSection>:null
+                </CommentSection> : null
             }
 
             {
-                commentArray.map(comment=><PostComment>{comment}</PostComment>)
+                commentArray.map(comment => <PostComment>{comment}</PostComment>)
             }
         </Post>
     )

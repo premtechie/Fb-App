@@ -153,8 +153,9 @@ function CreatePost(props) {
         const postInputs={
             id:uuid(),
             textValue:textData,
-            like:0,
-            comments:['hello']        
+            like:false,
+            comments:['hello'],
+            postLikeCount : 0       
         }
         dispatch(newPost(postInputs));
         setTextData('')

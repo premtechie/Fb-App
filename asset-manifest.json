@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/Fb-App/static/css/main.d507c527.chunk.css",
-    "main.js": "/Fb-App/static/js/main.07d2d81a.chunk.js",
-    "main.js.map": "/Fb-App/static/js/main.07d2d81a.chunk.js.map",
+    "main.js": "/Fb-App/static/js/main.0ff36ea9.chunk.js",
+    "main.js.map": "/Fb-App/static/js/main.0ff36ea9.chunk.js.map",
     "runtime-main.js": "/Fb-App/static/js/runtime-main.12d99158.js",
     "runtime-main.js.map": "/Fb-App/static/js/runtime-main.12d99158.js.map",
     "static/css/2.8ddd9e3d.chunk.css": "/Fb-App/static/css/2.8ddd9e3d.chunk.css",
-    "static/js/2.46ac1a48.chunk.js": "/Fb-App/static/js/2.46ac1a48.chunk.js",
-    "static/js/2.46ac1a48.chunk.js.map": "/Fb-App/static/js/2.46ac1a48.chunk.js.map",
+    "static/js/2.ca3a775e.chunk.js": "/Fb-App/static/js/2.ca3a775e.chunk.js",
+    "static/js/2.ca3a775e.chunk.js.map": "/Fb-App/static/js/2.ca3a775e.chunk.js.map",
     "static/js/3.58789899.chunk.js": "/Fb-App/static/js/3.58789899.chunk.js",
     "static/js/3.58789899.chunk.js.map": "/Fb-App/static/js/3.58789899.chunk.js.map",
     "index.html": "/Fb-App/index.html",
     "static/css/2.8ddd9e3d.chunk.css.map": "/Fb-App/static/css/2.8ddd9e3d.chunk.css.map",
     "static/css/main.d507c527.chunk.css.map": "/Fb-App/static/css/main.d507c527.chunk.css.map",
-    "static/js/2.46ac1a48.chunk.js.LICENSE.txt": "/Fb-App/static/js/2.46ac1a48.chunk.js.LICENSE.txt",
+    "static/js/2.ca3a775e.chunk.js.LICENSE.txt": "/Fb-App/static/js/2.ca3a775e.chunk.js.LICENSE.txt",
     "static/media/profile.444fc3a4.jpg": "/Fb-App/static/media/profile.444fc3a4.jpg",
     "static/media/profilePic.83a758fd.png": "/Fb-App/static/media/profilePic.83a758fd.png"
   },
   "entrypoints": [
     "static/js/runtime-main.12d99158.js",
     "static/css/2.8ddd9e3d.chunk.css",
-    "static/js/2.46ac1a48.chunk.js",
+    "static/js/2.ca3a775e.chunk.js",
     "static/css/main.d507c527.chunk.css",
-    "static/js/main.07d2d81a.chunk.js"
+    "static/js/main.0ff36ea9.chunk.js"
   ]
 }

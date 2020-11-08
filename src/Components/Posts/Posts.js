@@ -6,9 +6,7 @@ import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
 import { useSelector, useDispatch } from 'react-redux'
 import { commentDisplay, likeCountIncrement } from '../../Redux/ActionCreator/ActionCreator';
-import { COMMENT_POST } from '../../Redux/Actions/Actions';
 
-let count = false;
 
 const Post = styled.div`
     max-width:100%;
@@ -186,7 +184,6 @@ function Posts(props) {
     //----------------like handler section--------------------
     const likehandler = () => {
         dispatch(likeCountIncrement(postId))
-        count = true;
     }
 
     //------------comment handler section-------------
@@ -198,15 +195,25 @@ function Posts(props) {
             comments:commentText
         }
         if (commentText) {
-            dispatch(commentDisplay(commentText));
+            dispatch(commentDisplay(postComment));
             // dispatch({type:COMMENT_POST,payload:postComment })
             viewComment(false)
             sendComment('')
         }
 
     }
+    
+    //----------commnets array from reducer-----------------------
 
-    const commentArray = useSelector(state => state.comment)
+    const commentsOfPost=useSelector(state=>{
+        const comment = getPost(state);
+        return comment.comments
+    })
+
+
+
+    console.log('comments in Posts : ', commentsOfPost)
+
     //---------------current time----------
     let time = new Date().toLocaleString();
 
@@ -246,7 +253,7 @@ function Posts(props) {
                 <Share>
                     <RiShareForwardLine />
                     <div>Share</div>
-                </Share>
+                </Share>/
             </PostLikes>
             <CommentDiv>Comments:</CommentDiv>
             {comment ?
@@ -257,7 +264,7 @@ function Posts(props) {
             }
 
             {
-                commentArray.map(comment => <PostComment>{comment}</PostComment>)
+                commentsOfPost.map((comment, index) => <PostComment key={index} >{comment}</PostComment>)
             }
         </Post>
     )

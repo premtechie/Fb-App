@@ -154,7 +154,7 @@ function CreatePost(props) {
             id:uuid(),
             textValue:textData,
             like:false,
-            comments:['hello'],
+            comments:[],
             postLikeCount : 0       
         }
         dispatch(newPost(postInputs));

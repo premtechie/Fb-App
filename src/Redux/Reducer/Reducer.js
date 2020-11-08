@@ -45,10 +45,18 @@ const likeCounter = (state, action) => {
 
 const commentSection = (state, action) => {
     const data = action.payload;
-    const newState = { ...state };
+    const newState = JSON.parse(JSON.stringify(state));
+    let postData=newState.postData;
 
-    newState.comment.push(data)
-    console.log(newState);
+    postData.forEach(post=>{
+        if(post.id===data.id) {
+            post.comments.unshift(data.comments)
+        }
+    })
+
+    // newState.comment.push(data)
+    alert('From reducer')
+    console.log('comments : ',newState)
     return newState;
 }
 

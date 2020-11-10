@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Fb-App/static/css/main.d507c527.chunk.css",
-    "main.js": "/Fb-App/static/js/main.c3022f9f.chunk.js",
-    "main.js.map": "/Fb-App/static/js/main.c3022f9f.chunk.js.map",
+    "main.js": "/Fb-App/static/js/main.7b1b53a1.chunk.js",
+    "main.js.map": "/Fb-App/static/js/main.7b1b53a1.chunk.js.map",
     "runtime-main.js": "/Fb-App/static/js/runtime-main.12d99158.js",
     "runtime-main.js.map": "/Fb-App/static/js/runtime-main.12d99158.js.map",
     "static/css/2.8ddd9e3d.chunk.css": "/Fb-App/static/css/2.8ddd9e3d.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.8ddd9e3d.chunk.css",
     "static/js/2.ca3a775e.chunk.js",
     "static/css/main.d507c527.chunk.css",
-    "static/js/main.c3022f9f.chunk.js"
+    "static/js/main.7b1b53a1.chunk.js"
   ]
 }

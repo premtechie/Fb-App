@@ -1,60 +1,9 @@
 import React from 'react'
-import styled from 'styled-components';
 import pic from '../../Assets/profile.jpg';
 import {FaFacebookMessenger,FaRegNewspaper} from 'react-icons/fa';
 import { MdLiveTv } from "react-icons/md";
-
 import { Menu } from 'antd';
-
-
-
-const Image=styled.img`
-    width:30px;
-    height:30px;
-    border-radius:50%;
-`
-const Names=styled.div`
-    margin-left:10px;
-    font-size:13px;
-`
-
-const MessengerIcon=styled.div`
-    background-color:blue;
-    width:35px;
-    height:35px;
-    padding:0 8px;
-    font-size:18px;
-    border-radius:50%;
-    color:white;
-`
-const NewsIcon=styled.div`
-    background-color:orange;
-    width:35px;
-    height:35px;
-    padding:0 8px;
-    font-size:18px;
-    border-radius:50%;
-    color:white;
-`
-const WatchIcon=styled.div`
-    background-color:red;
-    width:35px;
-    height:35px;
-    padding:0 8px;
-    font-size:18px;
-    border-radius:50%;
-    color:white;
-`
-const ActionsWrapper=styled.div`
-    width:100%;
-    margin:10px 0;
-    margin-top:30px;
-    
-`
-const H4=styled.h4`
-    margin:10px 0;
-    padding:10px;
-`
+import {ActionsWrapper,MessengerIcon,H4,Names,NewsIcon,WatchIcon,Image} from '../../Styles/ActionButton'
 
 function ActionButtons() {
     return (

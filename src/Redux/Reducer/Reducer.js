@@ -22,7 +22,6 @@ const addPost = (state, action) => {
     const newState = JSON.parse(JSON.stringify(state));
     // newState.postData = [...state.postData];
     newState.postData.unshift(data)
-    console.log('Reducer:', newState)
     return newState;
 }
 
@@ -53,10 +52,6 @@ const commentSection = (state, action) => {
             post.comments.unshift(data.comments)
         }
     })
-
-    // newState.comment.push(data)
-    alert('From reducer')
-    console.log('comments : ',newState)
     return newState;
 }
 

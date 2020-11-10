@@ -1,66 +1,9 @@
 import { Menu } from 'antd';
 import React from 'react'
-import styled from 'styled-components';
 import { TiGroupOutline } from "react-icons/ti";
+import {ActionsWrapper,H4,UI_UX_Icon,Names,Count,Hella_Icon,Keytar_Icon} from '../../Styles/Shortcut';
 
 
-
-const Names=styled.div`
-    margin-left:10px;
-    font-size:12px;
-`
-
-const UI_UX_Icon=styled.div`
-    background-color:#e6fff2;
-    width:35px;
-    height:35px;
-    padding:0 5px;
-    font-size:24px;
-    border-radius:50%;
-    color:blue;
-`
-const Hella_Icon=styled.div`
-    background-color:f5f5f0;
-    width:35px;
-    height:35px;
-    padding:0 5px;
-    font-size:24px;
-    border-radius:50%;
-    color:orange;
-`
-const Keytar_Icon=styled.div`
-    background-color:f5f5f0;
-    width:35px;
-    height:35px;
-    padding:0 5px;
-    font-size:24px;
-    border-radius:50%;
-    color:red;
-`
-const ActionsWrapper=styled.div`
-    width:100%;
-    margin:10px 0;
-`
-const H4=styled.h4`
-    margin:10px 0;
-    padding:10px;
-`
-const Count=styled.div`
-    background-color:red;
-    color:white;
-    height:15px;
-    width:15px;
-    margin-left:10px;
-    font-size:9px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    -moz-box-shadow: 0 0 4px 4px #ccc;
-    -webkit-box-shadow: 0 0 4px 4px #ccc;
-    box-shadow: 0 0 4px 4px #ccc;
-
-`
 
 export default function ShortCuts() {
     return (

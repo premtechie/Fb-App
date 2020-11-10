@@ -1,154 +1,12 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
 import { AiFillLike } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import TextArea from 'antd/lib/input/TextArea'
 import { useSelector, useDispatch } from 'react-redux'
 import { commentDisplay, likeCountIncrement } from '../../Redux/ActionCreator/ActionCreator';
+import {Post,PostComment,PostImg,PostLikes,PostText,ProfileDp,ProfileName,DpImg,ImageContainer,H4,UserName,Time,Like,LikeCount,LikeIcon,Comment,CommentDiv,CommentSection,SendBtn,Share} from '../../Styles/Posts'
 
-
-const Post = styled.div`
-    max-width:100%;
-    display:flex;
-    flex-flow:column;
-    padding:10px;
-    justify-content:center;
-    background-color:white;
-    border-radius:20px;
-    margin:10px 0;
-`
-
-const ProfileDp = styled.div`
-    display:flex;
-    align-items:center;
-    margin:10px;
-    width:200px;
-    height:60px;
-`
-const DpImg = styled.img`
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    margin-right:10px;
-`
-const ImageContainer = styled.div`
-    display:flex;
-    justify-content:center;
-    width:100%;
-    flex:1 2 auto;
-    height:100%;
-    margin:10px 0;
-`
-const PostImg = styled.img`
-    width:100%;
-    margin:0 10px;
-    border-radius:20px;
-
-`
-const PostText = styled.div`
-    margin:10px;
-    display:flex;
-`
-const H4 = styled.div`
-    color:gray;
-    text-align:start;
-`
-const ProfileName = styled.div`
-    display:flex;
-    flex-direction:column;
-    align-items:start;
-    justify-content:center;
-    margin:0 10px;
-`
-const UserName = styled.div`
-    font-size:14px;
-    font-weight:bold;
-`
-const Time = styled.div`
-    font-size:11px;
-    color:#ccc;
-`
-const PostLikes = styled.div`
-    display:flex;
-    margin:10px;
-    width:95%;
-    border-radius:20px;
-    background-color:whitesmoke;
-`
-const LikeCount = styled.div`
-    width:100%;
-    border-radius:10px;
-    text-align:start;
-    padding-left:20px;
-`
-
-const Like = styled.div`
-    display:flex;
-    align-items:center;
-    width:33%;
-    justify-content:center;
-    padding:5px 0;
-    color:${props=>props.likeState ? "blue" : "black"};
-    cursor:pointer;
-    font-size:12px;
-`
-const Comment = styled.div`
-    display:flex;
-    align-items:center;
-    width:33%;
-    justify-content:center;
-    padding:5px 0;
-    color:black;
-    font-size:12px;
-    cursor:pointer;
-`
-const Share = styled.div`
-    display:flex;
-    align-items:center;
-    width:33%;
-    justify-content:center;
-    padding:5px 0;
-    color:black;
-    font-size:12px;
-    cursor:pointer;
-`
-const CommentSection = styled.div`
-    display:flex;
-    align-items:center;
-`
-const SendBtn = styled.button`
-    color:white;
-    width:100px;
-    height:30px;
-    margin:0 10px;
-    border:none;
-    border-radius:8px;
-    background-color:blue;
-    cursor:pointer;
-    outline:none;
-`
-const PostComment = styled.div`
-    width:95%;
-    padding:3px 20px;
-    margin:8px auto;
-    background-color:whitesmoke;
-    border-radius:20px;
-    text-align:start;
-
-`
-const CommentDiv = styled.div`
-    text-align:start;
-    color:blue;
-    margin-left:15px;
-    font-weight:bold;
-`
-const LikeIcon = styled.div`
-    display:flex;
-    align-items:center
-    color:blue;
-    font-size:13px;
-`
 
 
 function Posts(props) {
@@ -253,7 +111,7 @@ function Posts(props) {
                 <Share>
                     <RiShareForwardLine />
                     <div>Share</div>
-                </Share>/
+                </Share>
             </PostLikes>
             <CommentDiv>Comments:</CommentDiv>
             {comment ?
